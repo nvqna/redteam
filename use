@@ -1,0 +1,11 @@
+# Double B64-encoded content loaded in via a variety of methodologies
+$Content = “”
+ 
+# First Decode
+$firstDecode = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($Content))
+ 
+# Second Decode and Reflection
+$reflection = [System.Reflection.Assembly]::Load([System.Convert]::FromBase64String($firstDecode))
+
+# Load assemblies [Namespace.Class]::Method("parameters".Split())
+[SharpHound3.SharpHound]::Main('')
